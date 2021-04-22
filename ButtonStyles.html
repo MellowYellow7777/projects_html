@@ -1,0 +1,72 @@
+<!DOCTYPE html><html class='style' lang="en-US" dir="ltr">
+<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><title>Wird</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+<style>
+body {
+  background-color: black;
+  font: 24px 'Roboto Mono';
+  color: white;
+  margin: 24px;
+  user-select: none;
+}
+div {
+  display: inline-block;
+  font: 24px 'Roboto Mono';
+}
+.fa-check-square {
+  color:
+
+}
+
+</style>
+<script>
+function latch(id, st, sy) {
+  el = document.getElementById(id);
+  el.className = 'fa' + st + ' fa-' + sy;
+}
+function toggle(id, hi, lo) {
+  el = document.getElementById(id);
+  el.className =
+  lo.repeat(Number(el.className == hi)) +
+  hi.repeat(Number(el.className == lo));
+}
+</script>
+</head>
+<body>
+
+<div>Button:</div>
+<i id='btn0'
+  onmousedown="latch('btn0', 's', 'square')"
+  onmouseup="latch('btn0', 'r', 'square')"
+  onmouseout="latch('btn0', 'r', 'square')"
+  class='far fa-square'></i><br>
+<div>Checkbox:</div>
+<i id='btn1'
+  onmousedown="toggle('btn1', 'fas fa-check-square', 'far fa-square')"
+  class='far fa-square'></i>
+<i id='btn2'
+  onmousedown="toggle('btn2', 'fas fa-check-square', 'far fa-square')"
+  class='far fa-square'></i>
+<i id='btn3'
+  onmousedown="toggle('btn3', 'fas fa-check-square', 'far fa-square')"
+  class='far fa-square'></i><br>
+<div>Radio:</div>
+<i id='btn4' onmousedown="
+    latch('btn4', 'r', 'dot-circle');
+    latch('btn5', 'r', 'circle');
+    latch('btn6', 'r', 'circle')"
+  class='far fa-circle'></i>
+<i id='btn5' onmousedown="
+    latch('btn5', 'r', 'dot-circle');
+    latch('btn4', 'r', 'circle');
+    latch('btn6', 'r', 'circle')"
+  class='far fa-circle'></i>
+<i id='btn6' onmousedown="
+    latch('btn6', 'r', 'dot-circle');
+    latch('btn4', 'r', 'circle');
+    latch('btn5', 'r', 'circle')"
+  class='far fa-circle'></i><br>
+
+</body>
+</html>
