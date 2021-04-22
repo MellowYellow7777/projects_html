@@ -1,0 +1,70 @@
+<!DOCTYPE html><html class='style' lang="en-US" dir="ltr">
+<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><title>Clone</title>
+<style>
+body {
+  background-color: #111;
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: none;
+}
+
+div {/* -- alt style
+  outline: 25px ridge #333;
+  outline-offset: -25px;
+  border: 0px ridge #333;
+  background-color: gold;*/
+  font: 10px 'Roboto Mono';
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+</style>
+
+<script>
+function fl(val) {
+  return(Math.floor(val / 50) * 50)
+}
+
+var x, y, pos;
+function upd() {
+  dV = document.getElementById('dV');
+  x = fl(event.clientX), y = fl(event.clientY);
+  pos = x/50 + ',' + y/50;
+  dV.style.left = x + 'px', dV.style.top = y + 'px';
+  dV.style.backgroundColor = 'hsl(' + color + ', 100%, 50%)';
+  dV.innerHTML = (color/360).toFixed(5);//clones.indexOf(pos)
+}
+
+clones = [];
+function clone() {
+  upd(); if (clones.includes(pos)) {return};
+  clones.push(pos);
+  cln = document.getElementById('dV').cloneNode(true);
+  cln.setAttribute('id', 'dV' + cln.style.zIndex);
+  document.body.appendChild(cln);
+  dV.style.zIndex =  Number(dV.style.zIndex) + 1;
+}
+
+var color = 0;
+function c() {
+
+  color += (event.key == 'ArrowLeft') * -9 + (event.key == 'ArrowRight') * 9;
+  color = (color < 0) ? 351 : (color == 360) ? 0 : color;
+
+  upd()
+}
+
+</script>
+</head>
+<body onmousemove="upd()" onclick="clone()" onresize="upd()" onkeydown="c()">
+<div id='dV' style="z-index: 0"></div>
+</body>
+</html>
